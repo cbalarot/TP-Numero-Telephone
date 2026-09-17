@@ -2,9 +2,8 @@ import clavier.In;
 
 public class Ihm {
     public static void main(String[] args) {
-        String telephone, region="", zone = "";
+        String telephone, region="", zone = "",type;
         String telP1, telP2;
-        boolean mobile = false;
 
         //Input
         System.out.print("Entrez votre numéro de téléphone : ");
@@ -53,7 +52,7 @@ public class Ihm {
                 region = new String("Sud Ouest");
                 break;
             case "06":
-                mobile = true;
+                type = new String("mobile");
                 switch (telP2) {
                     case "01":
                         zone = new String("Neuf Cegetel");
@@ -71,10 +70,11 @@ public class Ihm {
                 }
                 break;
             case "07":
-                mobile = true;
+                type = new String("mobile");
                 zone = new String("");
                 break;
             case "09":
+                type = new String("ip");
                 break;
             default:
                 System.out.println("\rVotre numéro de téléphone n'est pas surpporté par ce logiciel");
@@ -82,13 +82,17 @@ public class Ihm {
         }
 
         System.out.print("Votre numéro " + telephone);
-        if (mobile) {
-            System.out.print(" est un numéro mobile");
-            if (!zone.isEmpty()) {
-                System.out.println(" de l'opérateur " + zone);
-            }
-        } else {
-            System.out.println(" est localisé en region " + region + " dans la zone " + zone);
+        switch (type) {
+            case "fixe":
+                System.out.println(" est localisé en region " + region + " dans la zone " + zone);
+            case "mobile":
+                System.out.print(" est un numéro mobile");
+                if (!zone.isEmpty()) {
+                    System.out.println(" de l'opérateur " + zone);
+                }
+            case "ip":
+                System.out.println("est un numéro VOIP");
+            default:
         }
     }
 }
