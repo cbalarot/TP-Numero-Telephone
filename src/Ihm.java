@@ -5,6 +5,15 @@ public class Ihm {
         String telephone, region = "", zone = "", type;
         String telP1, telP2;
 
+
+        /*
+        VARAIBLE type
+        fixe => téléphone fixe
+        mobile => téléphone mobile
+        ip => télépone VOIP
+        ngeo => téléphone non géographique
+        }*/
+
         //Input
         System.out.print("Entrez votre numéro de téléphone : ");
         telephone = In.readString();
