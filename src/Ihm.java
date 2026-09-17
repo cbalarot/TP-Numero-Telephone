@@ -20,6 +20,7 @@ public class Ihm {
 
         switch (telP1) {
             case "01":
+                type = new String("fixe");
                 region = new String("parisienne");
                 switch (telP2) {
                     case "34", "39":
@@ -33,12 +34,15 @@ public class Ihm {
                 }
                 break;
             case "02":
+                type = new String("fixe");
                 region = new String("Nord Ouest");
                 break;
             case "03":
+                type = new String("fixe");
                 region = new String("Nord Est");
                 break;
             case "04":
+                type = new String("fixe");
                 region = new String("Sud Est");
                 switch (telP2) {
                     case "75":
@@ -49,6 +53,7 @@ public class Ihm {
                 }
                 break;
             case "05":
+                type = new String("fixe");
                 region = new String("Sud Ouest");
                 break;
             case "06":
