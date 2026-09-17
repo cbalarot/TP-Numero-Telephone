@@ -2,7 +2,7 @@ import clavier.In;
 
 public class Ihm {
     public static void main(String[] args) {
-        String telephone, region="", zone = "",type;
+        String telephone, region = "", zone = "", type;
         String telP1, telP2;
 
         //Input
@@ -78,6 +78,26 @@ public class Ihm {
                 type = new String("mobile");
                 zone = new String("");
                 break;
+            case "08":
+                type = new String("ngeo");
+                switch (telP2) {
+                    case "00", "01", "02", "03", "04", "05":
+                        zone = new String("numéro verts (gratuit)");
+                        break;
+                    case "06", "07", "08", "09":
+                        zone = new String("(gratuit)");
+                        break;
+                    case "10", "11", "12", "13", "14", "15", "16", "17", "18", "19":
+                        zone = new String("vous paierez au maximum 6 centimes d’euros la minute, ou 15 centimes d’euros l’appel");
+                        break;
+                    case "20", "21", "22", "23", "24", "25", "26", "27", "28", "29":
+                        zone = new String("vous paierez au maximum 20 centimes d’euro par minute, ou 50 centimes d’euros par appel");
+                        break;
+                    case "90", "91", "92", "93", "94", "95", "96", "97", "98", "99":
+                        zone = new String("vous paierez au maximum 80 centimes d’euros par minute ou 3 euros par appel");
+                        break;
+                }
+                break;
             case "09":
                 type = new String("ip");
                 break;
@@ -97,6 +117,8 @@ public class Ihm {
                 }
             case "ip":
                 System.out.println("est un numéro VOIP");
+            case "ngeo":
+                System.out.println("est un numéro non gépgraphique, " + zone);
             default:
         }
     }
