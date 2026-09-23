@@ -2,7 +2,7 @@ import clavier.In;
 
 public class Ihm {
     public static void main(String[] args) {
-        String telephone, region = "", zone = "", type;
+        String telephone, region = "", zone = "", type, pays = "France";
         String telP1, telP2;
 
 
@@ -18,9 +18,39 @@ public class Ihm {
         System.out.print("Entrez votre numéro de téléphone : ");
         telephone = In.readString();
 
-        //Verif input
-        if (telephone.length() != 10) {
-            System.out.println("Entrez un numéro de téléphone valide !");
+
+        if (telephone.charAt(0) == '+') {
+            telephone = telephone.substring(1);
+            if (telephone.length() == 11) {
+                switch (telephone.charAt(1)) {
+                    case '1':
+                        pays = "Canada/Amercia";
+                        break;
+                    case '7':
+                        pays = "Kazakhstan/Russie";
+                        break;
+                }
+            }
+
+            switch (telephone.substring(0, 2)) {
+                case "20":
+                    pays = "Egypte";
+                    break;
+                case "27":
+                    pays = "Afrique du sud";
+                    break;
+                case "30":
+                    pays = "Grèce";
+                    break;
+                case "33":
+                    pays = "France";
+                    break;
+            }
+            telephone = "0" + telephone.substring(2);
+        }
+
+        if (!pays.equals("France")) {
+            System.out.println("Ce numero de téléphone vient de " + pays);
             return;
         }
 
@@ -119,15 +149,19 @@ public class Ihm {
         switch (type) {
             case "fixe":
                 System.out.println(" est localisé en region " + region + " dans la zone " + zone);
+                break;
             case "mobile":
                 System.out.print(" est un numéro mobile");
                 if (!zone.isEmpty()) {
                     System.out.println(" de l'opérateur " + zone);
                 }
+                break;
             case "ip":
                 System.out.println("est un numéro VOIP");
+                break;
             case "ngeo":
                 System.out.println("est un numéro non gépgraphique, " + zone);
+                break;
             default:
         }
     }
